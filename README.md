@@ -1,1 +1,1 @@
-Breakthrough System for Inclusive Society: "CobS" / "CobS E4"
+Breakthrough System for an Inclusive Society: "CobS" / "CobS E4"
