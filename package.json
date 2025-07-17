@@ -1,0 +1,17 @@
+{
+  "name": "cobs-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.4.5"
+    // その他、必要なライブラリを追加
+  },
+  "scripts": {
+    "start": "react-scripts start", 
+    // 開発サーバーを起動
+    "build": "react-scripts build" 
+    //本番用にファイルをビルド
+  }
+}
