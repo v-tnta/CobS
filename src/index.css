@@ -1,5 +1,6 @@
 /* Google FontsからBIZ UDPフォントをインポート */
 @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=BIZ+UDPMincho&display=swap');
+<<<<<<< HEAD
 
 body {
   margin: 0;
@@ -8,4 +9,33 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+=======
+
+/* すべての要素の基本的な余白とパディングをリセット */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'BIZ UDPGothic', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p{
+  margin-top: 16px;
+  line-height: 1.5;
+  text-indent: 2em; /*先頭文字　字上げ*/
+}
+
+h3{
+  margin-bottom: 20px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+>>>>>>> f0734dc (create)
 }
