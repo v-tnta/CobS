@@ -35,7 +35,7 @@ export const SyllabusSearch = () => {
   // --- 機能ロジック ---
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    let results = testSyllabusData;
+    let results = testSyllabusData; // 該当なしなら全て出す
 
     if (courseCode) {
       results = results.filter(s => s.courseCode.toLowerCase().includes(courseCode.toLowerCase()));
@@ -123,7 +123,7 @@ export const SyllabusSearch = () => {
         <hr style={{border: 'none', borderTop: `1px solid ${currentTheme.cardBg === '#FFFFFF' ? '#E0E0E0' : '#333'}`}}/>
         <div>
           {searchResults.map((syllabus) => (
-            <div key={syllabus.id} style={styles.listItem(syllabus.id === selectedSyllabusId)} onClick={() => setSelectedSyllabusId(syllabus.id)}>
+            <div key={syllabus.id} style={styles.listItem(syllabus.id === selectedSyllabusId)} onClick={() => {setSelectedSyllabusId(syllabus.id), setActiveTab('basic')}}>
               <div style={{ fontWeight: 'bold' }}>{syllabus.title}</div>
               <div style={{ fontSize: '0.9rem', color: currentTheme.subtleText }}>{syllabus.instructors.map(i => i.name).join(', ')}</div>
             </div>
@@ -144,7 +144,6 @@ export const SyllabusSearch = () => {
               <button style={styles.tabButton(activeTab === 'detailed')} onClick={() => setActiveTab('detailed')}>詳細情報</button>
               <button style={styles.tabButton(activeTab === 'schedule')} onClick={() => setActiveTab('schedule')}>授業計画</button>
               <button style={styles.tabButton(activeTab === 'others')} onClick={() => setActiveTab('others')}>その他</button>
-
             </nav>
 
             <div style={styles.tabContent}>
