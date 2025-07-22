@@ -78,6 +78,7 @@ export const Sidebar = ({ theme }: SidebarProps) => {
       borderRight: `1px solid ${theme.cardBg === '#FFFFFF' ? '#E0E0E0' : '#333'}`,
       padding: '24px',
       boxSizing: 'border-box',
+      userSelect:'none',
     } as React.CSSProperties,
     menuHeader: {
       padding: '12px 16px',
@@ -88,7 +89,6 @@ export const Sidebar = ({ theme }: SidebarProps) => {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      userSelect: 'none', // テキスト選択を防ぐ
     } as React.CSSProperties,
     subItemsContainer: (isOpen: boolean) => ({
       listStyle: 'none',
@@ -112,7 +112,7 @@ export const Sidebar = ({ theme }: SidebarProps) => {
 
   return (
     <nav style={styles.nav}>
-      <h1 style={{ fontFamily: theme.fontFamilyHeading, fontSize: '2rem', color: theme.primary, margin: '0 0 40px 0' }}>CobS</h1>
+      <h1 style={{fontFamily: theme.fontFamilyHeading, fontSize: '2rem', color: theme.primary, margin: '0 0 40px 0' }}>CobS</h1>
       
       {menuItems.map((item) => (
         <div key={item.id}>

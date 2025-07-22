@@ -46,22 +46,26 @@ export const Dashboard = () => {
       justifyContent: 'space-between',
       alignItems: 'center',
       marginBottom: '40px',
+      userSelect:'none',
     },
     heading: {
       fontFamily: currentTheme.fontFamilyHeading,
       fontSize: '2.5rem',
       margin: 0,
+      userSelect:'none',
     },
     card: {
       backgroundColor: currentTheme.cardBg,
       borderRadius: '12px',
       padding: '24px',
       marginBottom: '32px',
+      userSelect:'none',
     },
     cardTitle: {
       fontFamily: currentTheme.fontFamilyHeading,
       fontSize: '1.5rem',
       marginBottom: '20px',
+      userSelect:'none',
     },
     taskList: {
       listStyle: 'none',
@@ -73,11 +77,13 @@ export const Dashboard = () => {
       alignItems: 'center',
       padding: '16px 0',
       borderBottom: `1px solid ${isDarkMode ? '#333' : '#F0F0F0'}`,
+      userSelect:'none',
     },
     taskInfo: {
         deadline: { color: currentTheme.accent, fontWeight: 'bold' as const },
         taskName: { fontSize: '1.1rem', margin: '4px 0' },
         courseName: { color: currentTheme.subtleText },
+        userSelect:'none',
     },
     button: {
       padding: '10px 20px',

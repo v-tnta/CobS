@@ -24,7 +24,7 @@ export const SyllabusSearch = () => {
   const [activeTab, setActiveTab] = useState<'basic' | 'detailed' | 'schedule' | 'others'>('basic');
   
   // --- データ準備 ---
-  const selectedSyllabus = searchResults.find(s => s.id === selectedSyllabusId);
+  let selectedSyllabus = searchResults.find(s => s.id === selectedSyllabusId);
 
   // データから動的にユニークな所属リストを作成
   const uniqueDepartments = useMemo(() => {
@@ -51,10 +51,7 @@ export const SyllabusSearch = () => {
   };
 
   const handleClear = () => {
-    setYear('2025');
-    setDepartment('');
-    setCourseCode('');
-    setTitle('');
+    setSelectedSyllabusId(null);
     setSearchResults([]);
   };
 
@@ -64,19 +61,19 @@ export const SyllabusSearch = () => {
     listColumn: { width: '400px', flexShrink: 0, borderRight: `1px solid ${currentTheme.cardBg === '#FFFFFF' ? '#E0E0E0' : '#333'}`, overflowY: 'auto', backgroundColor: currentTheme.cardBg } as React.CSSProperties,
     detailColumn: { flexGrow: 1, padding: '48px', overflowY: 'auto' } as React.CSSProperties,
     listItem: (isSelected: boolean) => ({ padding: '16px 24px', borderBottom: `1px solid ${currentTheme.cardBg === '#FFFFFF' ? '#F0F0F0' : '#333'}`, cursor: 'pointer', backgroundColor: isSelected ? currentTheme.primary + '20' : 'transparent', borderLeft: isSelected ? `4px solid ${currentTheme.primary}` : 'none', paddingLeft: isSelected ? '20px' : '24px' }),
-    tabButton: (isActive: boolean) => ({ padding: '12px 24px', fontSize: '1rem', border: 'none', borderBottom: isActive ? `3px solid ${currentTheme.primary}` : '3px solid transparent', cursor: 'pointer', backgroundColor: 'transparent', color: isActive ? currentTheme.primary : currentTheme.subtleText, fontWeight: isActive ? 'bold' : 'normal' }),
+    tabButton: (isActive: boolean) => ({padding: '12px 24px', fontSize: '1rem', border: 'none', borderBottom: isActive ? `3px solid ${currentTheme.primary}` : '3px solid transparent', cursor: 'pointer', backgroundColor: 'transparent', color: isActive ? currentTheme.primary : currentTheme.subtleText, fontWeight: isActive ? 'bold' : 'normal' }),
     tabContent: { paddingTop: '24px' },
-    h1: { fontFamily: currentTheme.fontFamilyHeading },
-    h2: { fontFamily: currentTheme.fontFamilyHeading, fontSize: '1.8rem' },
-    h3: { fontFamily: currentTheme.fontFamilyHeading, fontSize: '1.5rem', marginTop: '24px' },
-    h4: { fontFamily: currentTheme.fontFamilyHeading, fontSize: '1rem', marginTop: '24px' },
+    h1: { userSelect:'none', fontFamily: currentTheme.fontFamilyHeading },
+    h2: { userSelect:'none',fontFamily: currentTheme.fontFamilyHeading, fontSize: '1.8rem' },
+    h3: { userSelect:'none',fontFamily: currentTheme.fontFamilyHeading, fontSize: '1.5rem', marginTop: '24px' },
+    h4: { userSelect:'none',fontFamily: currentTheme.fontFamilyHeading, fontSize: '1rem', marginTop: '24px' },
     searchForm: { padding: '24px' },
     formRow: { marginBottom: '16px', display: 'flex', alignItems: 'center' },
     formLabel: { width: '120px', flexShrink: 0, fontWeight: 'bold', fontSize: '0.9rem' },
     formInput: { width: '100%', padding: '8px 12px', fontSize: '1rem', borderRadius: '4px', border: `1px solid ${currentTheme.cardBg === '#FFFFFF' ? '#E0E0E0' : '#555'}`, backgroundColor: currentTheme.background, color: currentTheme.textColor },
     formActions: { marginTop: '24px', display: 'flex', gap: '8px' },
-    buttonPrimary: { flex: 1, padding: '12px', border: 'none', borderRadius: '8px', cursor: 'pointer', backgroundColor: currentTheme.primary, color: '#FFFFFF', fontSize: '1rem' },
-    buttonSecondary: { flex: 1, padding: '12px', border: `1px solid ${currentTheme.subtleText}`, borderRadius: '8px', cursor: 'pointer', backgroundColor: 'transparent', color: currentTheme.subtleText, fontSize: '1rem' },
+    buttonPrimary: { userSelect:'none', flex: 1, padding: '12px', border: 'none', borderRadius: '8px', cursor: 'pointer', backgroundColor: currentTheme.primary, color: '#FFFFFF', fontSize: '1rem' },
+    buttonSecondary: { userSelect:'none', flex: 1, padding: '12px', border: `1px solid ${currentTheme.subtleText}`, borderRadius: '8px', cursor: 'pointer', backgroundColor: 'transparent', color: currentTheme.subtleText, fontSize: '1rem' },
     criteriaTable: { width: '100%', borderCollapse: 'collapse', marginTop: '8px' },
     criteriaTableCell: { border: `1px solid ${currentTheme.cardBg === '#FFFFFF' ? '#E0E0E0' : '#333'}`, padding: '12px', textAlign: 'left', verticalAlign: 'top' },
     criteriaTableHeader: { fontWeight: 'bold', backgroundColor: currentTheme.primary + '10' },
@@ -124,8 +121,8 @@ export const SyllabusSearch = () => {
         <div>
           {searchResults.map((syllabus) => (
             <div key={syllabus.id} style={styles.listItem(syllabus.id === selectedSyllabusId)} onClick={() => {setSelectedSyllabusId(syllabus.id), setActiveTab('basic')}}>
-              <div style={{ fontWeight: 'bold' }}>{syllabus.title}</div>
-              <div style={{ fontSize: '0.9rem', color: currentTheme.subtleText }}>{syllabus.instructors.map(i => i.name).join(', ')}</div>
+              <div style={{userSelect:'none', fontWeight: 'bold' }}>{syllabus.title}</div>
+              <div style={{userSelect:'none', fontSize: '0.9rem', color: currentTheme.subtleText }}>{syllabus.instructors.map(i => i.name).join(', ')}</div>
             </div>
           ))}
         </div>
