@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // --- 型定義 ---
@@ -35,7 +35,29 @@ const menuItems: MenuItem[] = [
 
 export const Sidebar = ({ theme }: SidebarProps) => {
   const location = useLocation();
-  const [openMenus, setOpenMenus] = useState<string[]>([]);
+  
+  // localStorageに保存するためのキーを定義
+  const storageKey = 'cobs-sidebar-open-menus';
+
+  // 最初にlocalStorageからデータを読み込み、なければデフォルト値を設定する
+  const [openMenus, setOpenMenus] = useState<string[]>(() => {
+    try {
+      const storedValue = window.localStorage.getItem(storageKey);
+      return storedValue ? JSON.parse(storedValue) : ['academics'];
+    } catch (error) {
+      console.error("localStorageからの読み込みに失敗しました", error);
+      return ['academics']; // エラー時もデフォルト値
+    }
+  });
+
+  // openMenusの状態が変更されるたびに、その内容をlocalStorageに保存する
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(openMenus));
+    } catch (error) {
+      console.error("localStorageへの保存に失敗しました", error);
+    }
+  }, [openMenus]); // openMenus配列が変更された時だけこの処理が実行される
 
   const handleMenuClick = (menuId: string) => {
     setOpenMenus(prevOpenMenus => {

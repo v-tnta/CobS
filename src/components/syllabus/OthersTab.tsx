@@ -94,7 +94,7 @@ export const OthersTab = ({ syllabus }: Props) => {
             </tr>
             <tr>
             <td style={styles.labelCell}>SDGs関連科目</td>
-            <td style={styles.valueCell} style={{...styles.valueCell, whiteSpace: 'pre-wrap'}}>{syllabus.sdgs}</td>
+            <td style={{...styles.valueCell, whiteSpace: 'pre-wrap'}}>{syllabus.sdgs}</td>
             </tr>
         </tbody>
         </table>
