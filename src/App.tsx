@@ -1,15 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-import { Dashboard } from './components/Dashboard';
 
-export function App() {
-  return (
-    <div>
-      {/* ここでDashboardコンポーネントを呼び出す */}
-      <Dashboard />
-    </div>
-  );
-=======
 // src/App.tsx (修正後)
 
 import { Routes, Route } from 'react-router-dom';
@@ -24,5 +13,4 @@ export function App() {
   {/* 他のルートも同様に追加... */}
   </Routes>
   )
->>>>>>> f0734dc (create)
 }
